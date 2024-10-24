@@ -21,7 +21,7 @@ CPU内部结构：
 
 CPU通过各个组件的配合来执行一条指令：
 
-![](.\image\指令的执行.drawio.png)
+![](./image/指令的执行.drawio.png)
 
 
 
@@ -41,7 +41,7 @@ CPU通过各个组件的配合来执行一条指令：
 
 这样，进程就创建出来了
 
-![程序加载与运行](.\image\文件的加载与运行.drawio-1723977167382-2.png)
+![程序加载与运行](./image/文件的加载与运行.drawio-1723977167382-2.png)
 
 返回用户态时拿到的IP值就是程序的第一条指令命令，程序也就开始执行了。
 
@@ -87,7 +87,7 @@ union thread_union {
 
 stack表示栈空间，所以内核栈的布局是这样的
 
-![](.\image\内核栈.drawio.png)
+![](./image/内核栈.drawio.png)
 
 在内核栈的最高端，存放着一个 pt_regs 结构，这个结构包含了相关寄存器的定义，用户态寄存器的值就保存在这里，对于X86 32 位其定义如下
 
@@ -107,7 +107,7 @@ struct pt_regs {
 
 进程调度的过程大概如图：
 
-![](.\image\进程的调度.drawio.png)
+![](./image/进程的调度.drawio.png)
 
 
 
@@ -127,7 +127,7 @@ CPU不断执行当前的进程指令，所以在这种情况下，只要进程�
 
 #### 可编程中断控制器
 
-![](.\image\CPU-可编程中断控制器.drawio.png)
+![](./image/CPU-可编程中断控制器.drawio.png)
 
 外部设备的中断对应一个中断向量号，外部设备与可编程中断控制器的IRQ接口相连接。
 
@@ -137,7 +137,7 @@ CPU不断执行当前的进程指令，所以在这种情况下，只要进程�
 
 #### 时钟中断全流程
 
-![](.\image\时钟中断全流程.drawio.png)
+![](./image/时钟中断全流程.drawio.png)
 
 ### 进程切换
 
@@ -181,7 +181,7 @@ thread，内核线程
 
 processor，包含了运行的goroutine资源，如果线程想运行goroutine，必须先获取P，P中还包含了可运行的G队列。
 
-![](D:\学习笔记\share\image\GMP-1.png)
+![](./image/GMP-1.png)
 
 看一下正常调度的代码：
 
@@ -281,7 +281,7 @@ processor，包含了运行的goroutine资源，如果线程想运行goroutine�
 
 流程图如下：
 
-![](D:\学习笔记\share\image\GMP-2.png)
+![](./image/GMP-2.png)
 
 
 
@@ -774,7 +774,7 @@ main.Add STEXT nosplit size=49 args=0x10 locals=0x10 funcid=0x0 align=0x0
 
 - 栈帧
 
-  ![](D:\学习笔记\share\image\函数调用.png)
+  ![](./image/函数调用.png)
 
   当caller调用callee时，会把caller的返回地址压入到栈中
 
@@ -795,7 +795,7 @@ func Func1() {
 }
 ```
 
-![](D:\学习笔记\share\image\抢占式调度栈帧.png)
+![](./image/抢占式调度栈帧.png)
 
 ### asyncPreempt函数
 
