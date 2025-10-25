@@ -4,19 +4,13 @@ version：redis 6.0
 
 
 
-# 列表对象
-
-列表对象就1种编码方式：`quicklist`
-
-
-
 # quicklist
 
 quicklist主要由两部分构成：双向链表 + 压缩列表
 
 
 
-## 压缩列表ziplist
+# 压缩列表ziplist
 
 压缩列表是链表的一个节点，多个压缩列表形成的双向链表，构成了quicklist
 
@@ -24,7 +18,7 @@ quicklist主要由两部分构成：双向链表 + 压缩列表
 
 
 
-### 结构
+# 结构
 
 ziplist由几部分组成，按照顺序分别是bytes，lastEntryOffset，entryCount，entry，endSize。除了entry外，其他字段所占用的字节数是固定的
 
@@ -70,7 +64,7 @@ unsigned char *zl = zmalloc(bytes);
 
 
 
-### entry
+## entry
 
 entry是ziplist的一个元素对象，并且entry的大小不是固定的。除了保存"值"外，还需要保存一些其他值，以便我们能一个entry一个entry的遍历处理，以及正确的找到这个entry中的实际保存值。
 
@@ -151,7 +145,7 @@ entry由三个部分构成：prevlen，encoding和content
 
 
 
-#### 解析entry结构
+## 解析entry结构
 
 从这个entry结构我们能解析到什么数据
 
@@ -298,7 +292,7 @@ void zipEntry(unsigned char *p, zlentry *e) {
 
 
 
-## 双向链表
+# 双向链表
 
 一个ziplist构成了链表的一个节点
 
@@ -329,7 +323,7 @@ typedef struct quicklistNode {
 } quicklistNode;
 ```
 
-### 添加新节点
+## 添加新节点
 
 当ziplist的字节总数 或者 entry数达到一定量时，就不能再往原来的ziplist添加数据了。这个时候需要新开一个节点
 
@@ -341,7 +335,7 @@ typedef struct quicklistNode {
 
 
 
-### 压缩节点
+## 压缩节点
 
 默认不开启节点压缩。
 

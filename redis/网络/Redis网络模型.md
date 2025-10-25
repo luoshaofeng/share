@@ -4,11 +4,11 @@
 
 ## 网络请求
 
-![](../redis_io_image/TCP.png)
+![](./redis_io_image/TCP.png)
 
 ## 一次请求和响应
 
-![](../redis_io_image/tcp_send_data.png)
+![](./redis_io_image/tcp_send_data.png)
 
 # IO模型
 
@@ -27,14 +27,14 @@ IO：Input/Output，指的是数据的读取（接收）或写入（发送）
 1. 阻塞IO在接收缓冲区读取不到数据时，会将当前线程上下文保存在socket中，然后阻塞
 2. 阻塞IO在接收缓冲区读取到数据时，会将数据拷贝到用户态空间，然后由进程去处理数据
 
-![](../redis_io_image/BIO.png)
+![](./redis_io_image/BIO.png)
 
 ### 非阻塞IO
 
 1. 非阻塞IO在接收缓冲区读取不到数据时，会直接返回，并告诉调用方读取不到数据(EWOULDBLOCK错误码)
 2. 能读取到数据的情况跟阻塞IO是一样的
 
-![](../redis_io_image/NIO.png)
+![](./redis_io_image/NIO.png)
 
 ### 多路复用IO
 
@@ -46,7 +46,7 @@ IO：Input/Output，指的是数据的读取（接收）或写入（发送）
 
 **阻塞IO**
 
-![](../redis_io_image/mul_cli_block_io.png)
+![](./redis_io_image/mul_cli_block_io.png)
 
 单线程模式下，对于多个网络请求，当线程在等待某个网络请求时，即时其他的网络请求到达，线程也没办法处理，阻塞直到能够处理某个网络请求，才能继续处理其他网络请求
 
@@ -54,7 +54,7 @@ IO：Input/Output，指的是数据的读取（接收）或写入（发送）
 
 **非阻塞IO**
 
-![](../redis_io_image/mul_cli_non_block_io.png)
+![](./redis_io_image/mul_cli_non_block_io.png)
 
 
 
@@ -74,7 +74,7 @@ IO：Input/Output，指的是数据的读取（接收）或写入（发送）
 
 #### select
 
-![](../redis_io_image/select.png)
+![](./redis_io_image/select.png)
 
 - 每次都要将一组文件描述符拷贝到内核
 - 返回可读个数，还需要自己遍历，检查哪个文件是可读的
@@ -85,15 +85,15 @@ select只能监听1024个文件描述符，poll去掉了这个限制
 
 #### epoll
 
-![](../redis_io_image/epoll.png)
+![](./redis_io_image/epoll.png)
 
 ### 信号驱动IO
 
-![](../redis_io_image/信号驱动.png)
+![](./redis_io_image/信号驱动.png)
 
 ## 异步IO
 
-![](../redis_io_image/异步IO.png)
+![](./redis_io_image/异步IO.png)
 
 
 
@@ -101,7 +101,7 @@ select只能监听1024个文件描述符，poll去掉了这个限制
 
 ## 处理网络请求
 
-![](../redis_io_image/redis_io.png)
+![](./redis_io_image/redis_io.png)
 
 从上述的分析可以看到redis处理网络请求用的是IO多路复用
 
@@ -117,7 +117,7 @@ Reactor 模式的核心组件：
 
 ### 单线程模型
 
-![](../redis_io_image/reactor单线程.png)
+![](./redis_io_image/reactor单线程.png)
 
 selector监控IO事件后，会通过dispatch分发到不同事件类型的处理器(函数)进行事件处理
 
