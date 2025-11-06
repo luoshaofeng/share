@@ -352,7 +352,7 @@ int rewriteAppendOnlyFileBackground(void) {
 
 当进行aof重写时，主进程主要有几个操作：
 
-- 更新重哈希的策略为尽量避免重哈希
+- 更新重哈希的策略为尽量避免重哈希（避免页拷贝）
 - 记录aof重写的开始时间
 - 记录aof子进程的ID
 
